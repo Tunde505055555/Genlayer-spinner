@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="112" height="112" fill="none" role="img" aria-label="Loading">
+  <title>GenLayer Consensus Spinner</title>
+  <style>
+    svg {
+      --gl-dur: 1.6s;
+      --gl-brand: oklch(0.74 0.19 152);
+      --gl-brand-deep: oklch(0.58 0.15 176);
+      --gl-track: color-mix(in oklab, var(--gl-brand) 22%, transparent);
+      overflow: visible;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --gl-brand: oklch(0.85 0.2 152);
+        --gl-brand-deep: oklch(0.72 0.16 178);
+        --gl-track: color-mix(in oklab, var(--gl-brand) 26%, transparent);
+      }
+    }
+    .gl-spinner__track { stroke: var(--gl-track); }
+    .gl-spinner__arc { stroke: var(--gl-brand); }
+    .gl-spinner__sweep {
+      transform-origin: 24px 24px;
+      animation: gl-sweep var(--gl-dur) cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+    .gl-spinner__node {
+      fill: var(--gl-track);
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: gl-vote var(--gl-dur) ease-in-out infinite;
+    }
+    .gl-spinner__node--1 { animation-delay: calc(var(--gl-dur) * -0.25); }
+    .gl-spinner__node--2 { animation-delay: calc(var(--gl-dur) * -0.916); }
+    .gl-spinner__node--3 { animation-delay: calc(var(--gl-dur) * -0.583); }
+    .gl-spinner__core-shape {
+      stroke: var(--gl-brand-deep);
+      fill: color-mix(in oklab, var(--gl-brand) 14%, transparent);
+    }
+    .gl-spinner__core {
+      transform-origin: 24px 24px;
+      animation: gl-finality var(--gl-dur) ease-in-out infinite;
+    }
+    @keyframes gl-sweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes gl-vote {
+      0%, 60%, 100% { fill: var(--gl-track); transform: scale(1); }
+      12% { fill: var(--gl-brand); transform: scale(1.35); }
+      38% { fill: var(--gl-brand); transform: scale(1); }
+    }
+    @keyframes gl-finality {
+      0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.85; }
+      45% { transform: rotate(0deg) scale(0.9); opacity: 1; }
+      70% { transform: rotate(0deg) scale(1.04); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .gl-spinner__sweep { animation-duration: calc(var(--gl-dur) * 2.5); }
+      .gl-spinner__node, .gl-spinner__core { animation: none; }
+      .gl-spinner__node { fill: var(--gl-brand); }
+    }
+  </style>
+
+  <circle cx="24" cy="24" r="17" class="gl-spinner__track" stroke-width="2.5" />
+
+  <g class="gl-spinner__sweep">
+    <circle cx="24" cy="24" r="17" class="gl-spinner__arc" stroke-width="2.5"
+            stroke-linecap="round" pathLength="100" stroke-dasharray="26 74" />
+  </g>
+
+  <g class="gl-spinner__nodes">
+    <circle cx="24" cy="7" r="3.4" class="gl-spinner__node gl-spinner__node--1" />
+    <circle cx="38.72" cy="32.5" r="3.4" class="gl-spinner__node gl-spinner__node--2" />
+    <circle cx="9.28" cy="32.5" r="3.4" class="gl-spinner__node gl-spinner__node--3" />
+  </g>
+
+  <g class="gl-spinner__core">
+    <path d="M24 14.2 L33 29.8 H15 Z" class="gl-spinner__core-shape"
+          stroke-width="2.6" stroke-linejoin="round" />
+  </g>
+</svg>
