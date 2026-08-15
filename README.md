@@ -2,7 +2,7 @@
 
 An original, brand-native loading animation for the GenLayer Portal. Three validator nodes orbit an intelligent-contract core, a sweeping proposal arc triggers their votes, and the core pulses once per round at finality. Built as a standalone SVG with self-contained CSS, it loops smoothly, scales from 16 px to 112 px, and adapts automatically to light and dark surfaces while respecting `prefers-reduced-motion`.
 
-> **Live preview:** [Open the showcase](https://id-preview--4a051d8e-2931-4ccc-af11-96d7561a0502.lovable.app)
+
 
 ---
 
